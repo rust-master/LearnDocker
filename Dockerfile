@@ -1,16 +1,11 @@
 
+
 FROM ubuntu:16.04
 
-LABEL Creator: "Cerulean Canvas"
-
-RUN apt-get update && apt-get install -y curl \
+RUN apt-get update && apt-get install nginx -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /home/Codes
+EXPOSE 80
 
-ENV USER Cerulean-Canvas 
-ENV SHELL /bin/bash
-ENV LOGNAME Cerulean-Canvas
-
-CMD ["bash"]
+CMD ["nginx", "-g", "daemon off;"]
